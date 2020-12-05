@@ -1,11 +1,18 @@
 # Web Info
 This web application gives the information about a webpage
 
-## Running this application
+## Running this application on machine with go installed
 
-docker build -t "server:web-info"
+```
+	go run main.go
+```
+
+## Running this application on docker
+```
+docker build -t "server:web-info" .
 
 docker run --publish 3001:3001 -i -t "server:web-info"
+```
 
 ## API
 1. `GET /summary`
