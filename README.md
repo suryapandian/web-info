@@ -1,17 +1,17 @@
 # Web Info
 This web application gives the information about a webpage
 
-## Running this application on machine with go installed
-
-```
-	go run main.go
-```
-
-## Running this application on docker
+## Running this application
 ```
 docker build -t "server:web-info" .
 
 docker run --publish 3001:3001 -i -t "server:web-info"
+```
+
+### Running test cases
+
+```
+go test -race -cover -v -mod=vendor ./...   
 ```
 
 ## API
@@ -100,3 +100,9 @@ curl -X GET \
   -H "Accept: application/json" \
   -d '{"url": "https://www.home24.com/websites/homevierundzwanzig/English/0/home24.html"}' \
   "http://localhost:3001/info"
+
+````
+
+### Application architecture
+
+The application crawls the information for the given URL. Multiple go routines are spun to check the accessiblity of the links.
